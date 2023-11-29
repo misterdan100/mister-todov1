@@ -11,12 +11,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     border: 2px solid transparent;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .item:hover {
     border: 2px solid #fff;
-
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.02);
 }
 
 .item div {

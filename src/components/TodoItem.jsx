@@ -1,20 +1,29 @@
 import { CheckCircleIcon} from '@heroicons/react/24/solid'
 import { MinusCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
-
 import '../styles/TodoItem.css'
 
-const TodoItem = ({ titulo, completed }) => {
+const TodoItem = ({ titulo, completed, deleteTodo, completeTodo }) => {
   return (
-    <li className="item">
+    <li className={`item ${completed && 'opacity-50 item'}`}>
       <div>
-        <div className="check-icon">
-          <i className="gg-radio-check circle"><MinusCircleIcon /></i>
-          {/* <i className="gg-check check"><CheckCircleIcon /></i> */}
+        <div 
+          className="check-icon"
+          onClick={() => completeTodo(titulo)}
+        >
+          {
+            completed ? (
+              <i className="gg-check check"><CheckCircleIcon /></i>
+            ) : (
+              <i className="gg-radio-check circle"><MinusCircleIcon /></i>
+            )
+          }
         </div>
-        <p>{titulo}</p>
+        <p className={completed && 'line-through text-gray-400'} >{titulo}</p>
       </div>
-      <i className="gg-close close"><XMarkIcon /></i>
+      <i
+        className="gg-close close"
+        onClick={() => deleteTodo(titulo)}
+      ><XMarkIcon /></i>
     </li>
   );
 };

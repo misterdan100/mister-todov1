@@ -1,8 +1,11 @@
 import '../styles/CreateTodoButton.css'
 
-const CreateTodoButton = () => {
+const CreateTodoButton = ({createNewTodo}) => {
   return (
-    <button className="btn-active">Create Task</button>
+    <button
+    className="btn-active"
+      onClick={() => createNewTodo()}
+    >Create Task</button>
   )
 }
 

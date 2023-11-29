@@ -1,47 +1,45 @@
-import React from 'react';
-import TodoCounter from './TodoCounter';
-import TodoSearch from './TodoSearch';
-import TodoList from './TodoList';
-import TodoItem from './TodoItem';
-import '../styles/TaskSection.css'
+import { useEffect, useState } from "react";
+import TodoCounter from "./TodoCounter";
+import TodoSearch from "./TodoSearch";
+import TodoList from "./TodoList";
+import TodoItem from "./TodoItem";
+import "../styles/TaskSection.css";
 
+const TaskSection = ({ todos, setTodos, deleteTodo, completeTodo }) => {
+  const [ completedTodos, setCompletedTodos ] = useState(0)
 
-const TaskSection = () => {
+  let completedCalculator = () => {
+    const counterTodos = todos.filter((todo) => todo.completed === true);
+    return counterTodos.length;
+  };
 
-    const defaultTodos = [
-        { text: 'Cortar cebolla', completed: false },
-        { text: 'Curso introduccion a React JS', completed: true },
-        { text: 'Lavar zapatos', completed: false },
-        { text: 'Comprar mercado', completed: true },
-        { text: 'Cortar cebolla', completed: false },
-        { text: 'Curso introduccion a React JS', completed: true },
-        { text: 'Lavar zapatos', completed: false },
-        { text: 'Comprar mercado', completed: true },
-        { text: 'Cortar cebolla', completed: false },
-        { text: 'Curso introduccion a React JS', completed: true },
-        { text: 'Lavar zapatos', completed: false },
-        { text: 'Comprar mercado', completed: true },
-        { text: 'Cortar cebolla', completed: false },
-        { text: 'Curso introduccion a React JS', completed: true },
-        { text: 'Lavar zapatos', completed: false },
-        { text: 'Comprar mercado', completed: true },
-    ]
+  useEffect(() => {
+    setCompletedTodos(completedCalculator())
+  }, [todos])
+  
 
   return (
-    <div className='task-section'>
-            <h1 className='title'>Your tasks</h1>
+    <div className="task-section">
+      <h1 className="title">Your tasks</h1>
 
-            <TodoCounter completed={16} total={25} />
-            <TodoSearch />
+      <TodoCounter completed={completedTodos} total={todos.length} />
+      <TodoSearch />
 
-            <TodoList>
-                {defaultTodos.map(todo => (
-                    <TodoItem key={todo.text} titulo={todo.text} completed={todo.completed} />
-                )
-                )}
-            </ TodoList>
-        </div>
-  )
-}
+      {}
 
-export default TaskSection
+      <TodoList>
+        {todos?.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            titulo={todo.text}
+            completed={todo.completed}
+            deleteTodo={deleteTodo}
+            completeTodo={completeTodo}
+          />
+        ))}
+      </TodoList>
+    </div>
+  );
+};
+
+export default TaskSection;

@@ -1,11 +1,22 @@
 import '../styles/TaskName.css'
 
-function TaskName() {
+function TaskName({taskInput, setTaskInput, createNewTodo}) {
     return (
-        <div className="newTask">
+        <form 
+            className="newTask"
+            onSubmit={e => {
+                e.preventDefault()
+                createNewTodo()
+            }}    
+        >
             <label>Task Name:</label>
-            <input className="input-newTask" placeholder="Launch rocket to the moon"></input>
-        </ div>
+            <input 
+                className="input-newTask" 
+                placeholder="Launch rocket to the moon"
+                onChange={e => setTaskInput(e.target.value)}
+                value={taskInput}
+            ></input>
+        </ form>
     )
 };
 

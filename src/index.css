@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background-image: url('/light-blue-and-orange.jpg');
+    background-image: url('/light-blue-and-orange.png');
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;

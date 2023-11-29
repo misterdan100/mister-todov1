@@ -1,0 +1,14 @@
+.btn-active {
+    color: #fff;
+    background: #71357c;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    letter-spacing: 2px;
+}
+
+.btn-active:hover {
+    background: rgb(99, 41, 109);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

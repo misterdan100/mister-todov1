@@ -1,0 +1,30 @@
+.create-section {
+    /* background: rgba(255, 255, 255, 0.3); */
+    padding: 40px 30px 10px;
+    border-radius: 12px;
+    /* backdrop-filter: blur(15px); */
+    box-shadow: 0px 0px 20px rgba(0,0,0, 0.1);
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    width: 400px;
+    min-width: 300px;
+    max-width: 500px;
+    
+    display: block;
+    height: 700px;
+    position: sticky;
+    top: 20px;
+}
+
+.create-section:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #fff;
+}
+
+.create-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    /* color: #3e1547; */
+    color: #4d0081;
+}

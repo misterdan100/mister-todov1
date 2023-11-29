@@ -1,0 +1,29 @@
+.search-container {
+    width: 280px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.input-search {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    color: #000;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.input-search::placeholder {
+    color: #333;
+}
+
+.search-container .search-icon {
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    color: #71357c;
+    cursor: none;
+}

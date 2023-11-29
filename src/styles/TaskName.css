@@ -1,0 +1,20 @@
+.newTask {
+    display: grid;
+
+}
+
+.newTask label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+.newTask input {
+    padding: 10px 15px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}

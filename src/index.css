@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-image: url('/light-blue-and-orange.jpg');
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    justify-items: start;
+}

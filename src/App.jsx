@@ -9,21 +9,39 @@ function App() {
   const [ todosMessage, setTodosMessage ] = useState('');
   const [ categorySelected, setCategorySelected ] = useState('All');
 
-  if (!todos.length) {
-    const defaultTodos = [
-      { text: "Cortar cebolla", completed: false },
-      { text: "Curso introduccion a React JS", completed: true },
-      { text: "Lavar zapatos", completed: false },
-      { text: "Comprar mercado", completed: true },
-    ];
-    setTodos(defaultTodos);
-    setTodosToShow(defaultTodos)
+  // if (!todos.length) {
+  //   const defaultTodos = [
+  //     { text: "Cortar cebolla", completed: false },
+  //     { text: "Curso introduccion a React JS", completed: true },
+  //     { text: "Lavar zapatos", completed: false },
+  //     { text: "Comprar mercado", completed: true },
+  //   ];
+  //   setTodos(defaultTodos);
+  //   setTodosToShow(defaultTodos)
+  // }
+
+  //! GET todos from LocalStorage
+  const getLocalStorage = async () => {
+    const respuesta = localStorage.getItem('todos1');
+    const resultado = JSON.parse(respuesta);
+    setTodos(resultado)
+    setTodosToShow(resultado)
+  }
+
+  useEffect(() => {
+    getLocalStorage();
+  }, [])
+
+  //! POST todos on LocalStorage
+  const postLocalStorage = todosToLS => {
+    localStorage.setItem('todos1', JSON.stringify(todosToLS))
   }
 
   const deleteTodo = taskToDelete => {
     const todosAfterDelete = todos.filter( todo => todo.text !== taskToDelete);
     setTodos(todosAfterDelete)
     setTodosToShow(todosAfterDelete)
+    postLocalStorage(todosAfterDelete)
   }
 
   const completeTodo = taskToComplete => {
@@ -36,6 +54,7 @@ function App() {
     })
     setTodos(modifiedTodos)
     setTodosToShow(modifiedTodos)
+    postLocalStorage(todos)
   }
 
   const filterTodos = ( searchValue ) => {
@@ -50,7 +69,6 @@ function App() {
   }
 
   const categoryFilter = category => {
-    console.log('filtrando x categoria', category);
     if(category === 'Done') {
       const filteredTodos = todos.filter( todo => todo.completed === true)
       setTodosToShow(filteredTodos)
@@ -74,6 +92,7 @@ function App() {
           todos={todos} 
           setTodos={setTodos} 
           setTodosToShow={setTodosToShow}
+          postLocalStorage={postLocalStorage}
         />
         <TaskSection 
           todos={todos} 

@@ -3,9 +3,20 @@ import TodoCounter from "./TodoCounter";
 import TodoSearch from "./TodoSearch";
 import TodoList from "./TodoList";
 import TodoItem from "./TodoItem";
+import Alert from "./Alert";
 import "../styles/TaskSection.css";
 
-const TaskSection = ({ todos, setTodos, deleteTodo, completeTodo }) => {
+const TaskSection = ({ 
+    todos, 
+    setTodos, 
+    deleteTodo, 
+    completeTodo,
+    todosToShow,
+    setTodosToShow,
+    filterTodos,
+    todosMessage,
+    setTodosMessage,
+}) => {
   const [ completedTodos, setCompletedTodos ] = useState(0)
 
   let completedCalculator = () => {
@@ -15,20 +26,33 @@ const TaskSection = ({ todos, setTodos, deleteTodo, completeTodo }) => {
 
   useEffect(() => {
     setCompletedTodos(completedCalculator())
-  }, [todos])
-  
+}, [todos])
+
+//* Check if all todos are completed to show congrat message
+useEffect(() => {
+    completedTodos === todos.length ? setTodosMessage("Congratulations, You're so productive!") : setTodosMessage('')
+}, [completedTodos, todos])
 
   return (
     <div className="task-section">
-      <h1 className="title">Your tasks</h1>
+      <h1 className="title">Your tasks
+      
+      <div className="w-full h-2 bg-teal-100 relative">
+        <div className="w-3/4 h-2 bg-teal-600"></div>
+      </div>
+      </h1>
 
       <TodoCounter completed={completedTodos} total={todos.length} />
-      <TodoSearch />
+      <TodoSearch 
+        filterTodos={filterTodos}
+      />
 
-      {}
+      {todosMessage && (
+        <Alert alertText={todosMessage}/>
+      )}
 
       <TodoList>
-        {todos?.map((todo) => (
+        {todosToShow?.map((todo) => (
           <TodoItem
             key={todo.text}
             titulo={todo.text}

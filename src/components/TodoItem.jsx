@@ -18,7 +18,7 @@ const TodoItem = ({ titulo, completed, deleteTodo, completeTodo }) => {
             )
           }
         </div>
-        <p className={completed && 'line-through text-gray-400'} >{titulo}</p>
+        <p className={completed ? 'line-through text-gray-400' : undefined} >{titulo}</p>
       </div>
       <i
         className="gg-close close"

@@ -4,7 +4,9 @@ import "./App.css";
 import TaskSection from "./components/TaskSection";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [ todos, setTodos ] = useState([]);
+  const [ todosToShow, setTodosToShow ] = useState([]);
+  const [ todosMessage, setTodosMessage ] = useState('');
 
   if (!todos.length) {
     const defaultTodos = [
@@ -14,10 +16,13 @@ function App() {
       { text: "Comprar mercado", completed: true },
     ];
     setTodos(defaultTodos);
+    setTodosToShow(defaultTodos)
   }
 
   const deleteTodo = taskToDelete => {
-    setTodos(todos.filter( todo => todo.text !== taskToDelete))
+    const todosAfterDelete = todos.filter( todo => todo.text !== taskToDelete);
+    setTodos(todosAfterDelete)
+    setTodosToShow(todosAfterDelete)
   }
 
   const completeTodo = taskToComplete => {
@@ -29,17 +34,38 @@ function App() {
       return todo
     })
     setTodos(modifiedTodos)
+    setTodosToShow(modifiedTodos)
+  }
+
+  const filterTodos = ( searchValue ) => {
+    if(searchValue) {
+      const filteredTodos = todos.filter( todo => todo.text.toLowerCase().includes(searchValue.toLowerCase()))
+      setTodosToShow(filteredTodos)
+      filteredTodos.length === 0 ? setTodosMessage('No hay coincidencias') : setTodosMessage('')
+      return
+    }
+    setTodosToShow(todos)
+    return
   }
 
   return (
     <>
       <div className="main-container flex flex-col items-center md:flex-row md:justify-center md:items-start gap-6 bg-gray-100 bg-opacity-50 backdrop-blur-xl p-4  mt-6 border-2 border-gray-200 rounded-2xl shadow-lg transition">
-        <CreateSection todos={todos} setTodos={setTodos} />
+        <CreateSection 
+          todos={todos} 
+          setTodos={setTodos} 
+          setTodosToShow={setTodosToShow}
+        />
         <TaskSection 
           todos={todos} 
           setTodos={setTodos}
           deleteTodo={deleteTodo}
           completeTodo={completeTodo}
+          todosToShow={todosToShow}
+          setTodosToShow={setTodosToShow}
+          filterTodos={filterTodos}
+          todosMessage={todosMessage}
+          setTodosMessage={setTodosMessage}
         />
       </div>
     </>

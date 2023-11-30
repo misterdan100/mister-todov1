@@ -5,7 +5,7 @@ import Alert from './Alert';
 import { idGenerator } from '../helpers';
 import '../styles/CreateSection.css'
 
-function CreateSection({todos, setTodos}) {
+function CreateSection({todos, setTodos, setTodosToShow}) {
     const [ taskInput, setTaskInput ] = useState('')
     const [ isAlert, setIsAlert ] = useState(false)
     const [ alertText, setAlertText ] = useState('')
@@ -34,6 +34,7 @@ function CreateSection({todos, setTodos}) {
 
         const newTask = { text: taskInput, completed: false, id: idGenerator() }
         setTodos([...todos, newTask])
+        setTodosToShow([...todos, newTask])
         setTaskInput('')
     }
 

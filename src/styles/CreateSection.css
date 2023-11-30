@@ -2,6 +2,7 @@
     /* background: rgba(255, 255, 255, 0.3); */
     padding: 40px 30px 20px;
     border-radius: 12px;
+    
     /* backdrop-filter: blur(15px); */
     box-shadow: 0px 0px 20px rgba(0,0,0, 0.1);
     border: 1px solid transparent;
@@ -10,9 +11,11 @@
     min-width: 200px;
     max-width: 500px;
     /* align-self: flex-start; */
-    display: block;
+    display: flex;
+    flex-direction: column;
     /* height: 700px; */
     position: sticky;
+    gap: 16px;
     top: 20px;
 }
 

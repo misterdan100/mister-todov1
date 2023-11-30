@@ -24,9 +24,14 @@ function App() {
   const getLocalStorage = async () => {
     const respuesta = localStorage.getItem('todos1');
     const resultado = JSON.parse(respuesta);
-    console.log(resultado);
-    setTodos(resultado)
-    setTodosToShow(resultado)
+    if(resultado) {
+      setTodos(resultado)
+      setTodosToShow(resultado)
+    } else {
+      setTodos([])
+      setTodosToShow([])
+
+    }
   }
 
   useEffect(() => {

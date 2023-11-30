@@ -42,6 +42,8 @@ function App() {
     setTodos(todosAfterDelete)
     setTodosToShow(todosAfterDelete)
     postLocalStorage(todosAfterDelete)
+
+
   }
 
   const completeTodo = taskToComplete => {
@@ -85,6 +87,10 @@ function App() {
 
   }
 
+  useEffect(() => {
+    categoryFilter(categorySelected)
+  }, [todos])
+
   return (
     <>
       <div className="main-container flex flex-col items-center md:flex-row md:justify-center md:items-start gap-6 bg-gray-100 bg-opacity-50 backdrop-blur-xl p-4  mt-6 border-2 border-gray-200 rounded-2xl shadow-lg transition">
@@ -93,6 +99,7 @@ function App() {
           setTodos={setTodos} 
           setTodosToShow={setTodosToShow}
           postLocalStorage={postLocalStorage}
+          categoryFilter={categoryFilter}
         />
         <TaskSection 
           todos={todos} 

@@ -35,8 +35,16 @@ const TaskSection = ({
 
 //* Check if all todos are completed to show congrat message
 useEffect(() => {
-    completedTodos === todos.length ? setTodosMessage("Congratulations, You're so productive!") : setTodosMessage('')
-    
+    if(todos.length === 0) {
+        setTodosMessage("You don't have Todos!")
+        return
+    }
+
+    if(completedTodos === todos.length) {
+        setTodosMessage("Congratulations, You're so productive!")
+        return
+    }
+    setTodosMessage('')
 }, [completedTodos, todos])
 
 useEffect(() => {

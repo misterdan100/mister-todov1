@@ -61,7 +61,7 @@ useEffect(() => {
       </div> */}
       </h1>
 
-      <TodoCounter completed={completedTodos} total={todos.length} />
+      <TodoCounter completed={completedTodos} total={todos?.length} />
       <TodoSearch 
         filterTodos={filterTodos}
       />

@@ -24,6 +24,7 @@ function App() {
   const getLocalStorage = async () => {
     const respuesta = localStorage.getItem('todos1');
     const resultado = JSON.parse(respuesta);
+    console.log(resultado);
     setTodos(resultado)
     setTodosToShow(resultado)
   }
@@ -38,7 +39,7 @@ function App() {
   }
 
   const deleteTodo = taskToDelete => {
-    const todosAfterDelete = todos.filter( todo => todo.text !== taskToDelete);
+    const todosAfterDelete = todos?.filter( todo => todo.text !== taskToDelete);
     setTodos(todosAfterDelete)
     setTodosToShow(todosAfterDelete)
     postLocalStorage(todosAfterDelete)

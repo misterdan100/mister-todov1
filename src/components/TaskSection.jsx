@@ -47,9 +47,9 @@ useEffect(() => {
     setTodosMessage('')
 }, [completedTodos, todos])
 
-useEffect(() => {
-    setCompletedRate(`w-[${Math.floor((completedTodos/todos.length)*100)}%]`) 
-}, [completedTodos])
+// useEffect(() => {
+//     setCompletedRate(`w-[${Math.floor((completedTodos/todos.length)*100)}%]`) 
+// }, [completedTodos])
 
 
   return (

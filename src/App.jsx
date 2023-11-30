@@ -7,6 +7,7 @@ function App() {
   const [ todos, setTodos ] = useState([]);
   const [ todosToShow, setTodosToShow ] = useState([]);
   const [ todosMessage, setTodosMessage ] = useState('');
+  const [ categorySelected, setCategorySelected ] = useState('All');
 
   if (!todos.length) {
     const defaultTodos = [
@@ -48,6 +49,24 @@ function App() {
     return
   }
 
+  const categoryFilter = category => {
+    console.log('filtrando x categoria', category);
+    if(category === 'Done') {
+      const filteredTodos = todos.filter( todo => todo.completed === true)
+      setTodosToShow(filteredTodos)
+      return
+    }
+
+    if(category === 'Uncompleted') {
+      const filteredTodos = todos.filter( todo => todo.completed === false)
+      setTodosToShow(filteredTodos)
+      return
+    }
+    setTodosToShow(todos)
+    return
+
+  }
+
   return (
     <>
       <div className="main-container flex flex-col items-center md:flex-row md:justify-center md:items-start gap-6 bg-gray-100 bg-opacity-50 backdrop-blur-xl p-4  mt-6 border-2 border-gray-200 rounded-2xl shadow-lg transition">
@@ -66,6 +85,9 @@ function App() {
           filterTodos={filterTodos}
           todosMessage={todosMessage}
           setTodosMessage={setTodosMessage}
+          categoryFilter={categoryFilter}
+          categorySelected={categorySelected}
+          setCategorySelected={setCategorySelected}
         />
       </div>
     </>

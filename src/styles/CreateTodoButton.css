@@ -2,9 +2,10 @@
     color: #fff;
     background: #71357c;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 40px;
     border-radius: 8px;
     letter-spacing: 2px;
+    
 }
 
 .btn-active:hover {

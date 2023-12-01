@@ -4,8 +4,18 @@
 
 body {
     background-image: url('/light-blue-and-orange.png');
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    justify-items: start;
+    /* background-repeat: no-repeat; */
+    /* justify-items: start; */
+    width: 100%;
+    
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
 }

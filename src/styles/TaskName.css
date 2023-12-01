@@ -1,6 +1,5 @@
 .newTask {
     display: grid;
-
 }
 
 .newTask label {
@@ -16,5 +15,15 @@
     backdrop-filter: blur(10px);
     border: none;
     border-radius: 8px;
-    margin-bottom: 15px;
+
+}
+
+@media screen and (min-width: 768px) {
+    .newTask label {
+        margin-bottom: 8px;
+    }
+
+    .newTask input {
+        margin-bottom: 15px;
+    }
 }

@@ -99,7 +99,7 @@ function App() {
 
   return (
     <>
-      <div className="main-container flex flex-col items-center md:flex-row md:justify-center md:items-start gap-6 bg-gray-100 bg-opacity-50 backdrop-blur-xl p-4  mt-6 border-2 border-gray-200 rounded-2xl shadow-lg transition">
+      <div className="main-container">
         <CreateSection 
           todos={todos} 
           setTodos={setTodos} 

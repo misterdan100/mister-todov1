@@ -1,20 +1,14 @@
 .create-section {
-    /* background: rgba(255, 255, 255, 0.3); */
-    padding: 40px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* min-width: 200px; */
+    padding: 15px 30px 20px;
     border-radius: 12px;
-    
-    /* backdrop-filter: blur(15px); */
     box-shadow: 0px 0px 20px rgba(0,0,0, 0.1);
     border: 1px solid transparent;
     transition: all 0.3s;
-    width: 400px;
-    min-width: 200px;
-    max-width: 500px;
-    /* align-self: flex-start; */
-    display: flex;
-    flex-direction: column;
-    /* height: 700px; */
-    position: sticky;
     gap: 16px;
     top: 20px;
 }
@@ -26,8 +20,31 @@
 
 .create-title {
     font-size: 30px;
-    margin-bottom: 20px;
     font-weight: 800;
-    /* color: #3e1547; */
     color: #4d0081;
+}
+
+@media screen and (min-width: 768px) {
+    .create-section {
+        position: sticky;
+        align-items: normal;
+        width: 290px;
+        padding: 40px 30px 20px;
+    }
+
+    .create-title {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .create-section {
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .create-section {
+        width: 500px;
+    }
 }

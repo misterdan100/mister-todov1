@@ -66,7 +66,7 @@ useEffect(() => {
         filterTodos={filterTodos}
       />
 
-      <div className="flex w-full gap-4 justify-center mb-4">
+      <div className="flex w-full flex-wrap gap-4 justify-center mb-4">
         <CategoryButton 
         buttonText='All' 
         categoryFilter={categoryFilter}

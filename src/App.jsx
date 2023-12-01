@@ -8,6 +8,7 @@ function App() {
   const [ todosToShow, setTodosToShow ] = useState([]);
   const [ todosMessage, setTodosMessage ] = useState('');
   const [ categorySelected, setCategorySelected ] = useState('All');
+  const [ searchValue, setSearchValue ] = useState('');
 
   // if (!todos.length) {
   //   const defaultTodos = [
@@ -65,18 +66,20 @@ function App() {
     postLocalStorage(todos)
   }
 
+  //* Filter todos by name
   const filterTodos = ( searchValue ) => {
     if(searchValue) {
       const filteredTodos = todos.filter( todo => todo.text.toLowerCase().includes(searchValue.toLowerCase()))
       setTodosToShow(filteredTodos)
       filteredTodos.length === 0 ? setTodosMessage('No hay coincidencias') : setTodosMessage('')
-      return
+      return filteredTodos
     }
     setTodosToShow(todos)
-    return
+    return todos
   }
 
-  const categoryFilter = category => {
+  //* Filter todos by Category done || uncompleted
+  const categoryFilter = (category, todos) => {
     if(category === 'Done') {
       const filteredTodos = todos.filter( todo => todo.completed === true)
       setTodosToShow(filteredTodos)
@@ -94,8 +97,23 @@ function App() {
   }
 
   useEffect(() => {
-    categoryFilter(categorySelected)
-  }, [todos])
+    if( searchValue && (categorySelected !== 'All')) {
+      const filtered = filterTodos(searchValue)
+      console.log(filtered);
+      categoryFilter(categorySelected, filtered)
+      return
+    }
+
+    if( searchValue ) {
+      filterTodos(searchValue)
+      return
+    }
+
+    console.log(categorySelected, todos);
+
+      categoryFilter(categorySelected, todos)
+      return
+  }, [todos, searchValue, categorySelected])
 
   return (
     <>
@@ -120,6 +138,8 @@ function App() {
           categoryFilter={categoryFilter}
           categorySelected={categorySelected}
           setCategorySelected={setCategorySelected}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
         />
       </div>
     </>
